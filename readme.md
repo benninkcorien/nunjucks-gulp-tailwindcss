@@ -151,3 +151,4 @@ Add the pages you want to appear in the nav menu to the navitems in src/template
 
 - 24-2-2022 : Fixed the src path for the css in the header, everything is working now.
 - 24-2-2022 : you can now run `gulp minifycss` to minify the css files and generate .min.css files in dist/assets/css
+- 24-2-2022 : Added functionality for: images resize (4 custom sizes, width of 325, 500, 768, 1024px is generated for each source file). Minify images (output in dist/images/smaller). Convert images to WebP format (output in dist/images/webp)
