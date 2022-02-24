@@ -156,3 +156,9 @@ this will generate \*.webp files and put them in dist/images/webp
 ## ToDO
 
 Add working contact form?
+
+##### Creative commons
+
+(I don't check github often enough to deal with pull requests. Just download/clone/fork it and then upload it as your own.
+
+Consider whatever I didn't borrow from anyone else - see credits - CreativeCommons CC (no BY needed) )
