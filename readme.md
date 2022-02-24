@@ -30,9 +30,9 @@ Nunjucks uses templates for HTML files (change things in 1 place, and all files 
 - run `gulp auto` . this will launch browsersync and watch for changes etc.
 - try changing one of the pages inside `src/pages` & your browser will auto-reload, displaying the change you just made.
 
-![](screenshot.jpg)
+## Screenshot of the resulting homepage
 
-> _Run `gulp minify` if you want to minify your html files inside `dist` folder_
+![](screenshot.jpg)
 
 ### How to change
 
