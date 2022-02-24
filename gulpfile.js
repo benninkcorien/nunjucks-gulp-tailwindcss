@@ -1,11 +1,15 @@
 // gulpfile.js
-const run = require("gulp-run-command").default;
-const gulp = require("gulp");
 const browserSync = require("browser-sync").create();
+const cleanCSS = require("gulp-clean-css");
+const extReplace = require("gulp-ext-replace");
+const gulp = require("gulp");
 const htmlmin = require("gulp-htmlmin");
 const nunjucksRender = require("gulp-nunjucks-render");
-const version = require("gulp-version-number");
+const run = require("gulp-run-command").default;
 const sass = require("gulp-sass")(require("sass"));
+const sourcemaps = require("gulp-sourcemaps");
+const version = require("gulp-version-number");
+
 const PATHS = {
   output: "dist",
   srcpath: "src",
@@ -43,6 +47,14 @@ gulp.task("sync", function () {
   });
 });
 
+gulp.task("minify-css", () => {
+  return gulp
+    .src(PATHS.output + "/assets/css/*.css")
+    .pipe(cleanCSS({ compatibility: "ie8" }))
+    .pipe(extReplace(".min.css"))
+    .pipe(gulp.dest(PATHS.output + "/assets/css/"));
+});
+
 gulp.task("watch", function () {
   // trigger Nunjucks render when pages or templates changes
   // File support for .html .njk .js .css
@@ -76,7 +88,9 @@ gulp.task("minify", function () {
 gulp.task("sass", function () {
   return gulp
     .src(PATHS.srcpath + "/sass/*.sass")
+    .pipe(sourcemaps.init())
     .pipe(sass({ outputStyle: "compressed" }))
+    .pipe(sourcemaps.write("."))
     .pipe(gulp.dest(PATHS.output + "/assets/css"));
 });
 

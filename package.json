@@ -26,6 +26,9 @@
         "tailwindcss": "^3.0.23"
     },
     "dependencies": {
-        "gulp-run-command": "^0.0.10"
+        "gulp-clean-css": "^4.3.0",
+        "gulp-ext-replace": "^0.3.0",
+        "gulp-run-command": "^0.0.10",
+        "gulp-sourcemaps": "^3.0.0"
     }
 }

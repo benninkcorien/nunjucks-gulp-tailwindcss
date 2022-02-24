@@ -119,3 +119,4 @@ Add the pages you want to appear in the nav menu to the navitems in src/template
 ## Changelog
 
 24-2-2022 : Fixed the src path for the css in the header, everything is working now.
+24-2-2022 : you can now run `gulp minify-css` to minify the css files and generate .min.css files in dist/assets/css
