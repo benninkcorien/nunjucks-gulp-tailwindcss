@@ -1,0 +1,11 @@
+{% extends "layout.njk" %}
+
+{% set title = 'About' %}
+{% set pagename = 'about' %}
+
+{% block maincontent %}
+    {% include 'partials/section1.njk' %}
+    {% include 'partials/3blocks.njk' %}
+    {% include 'partials/pricing-table.njk' %}
+    {% include 'partials/call-to-action.njk' %}
+{% endblock maincontent %}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta name="viewport"
+        content="width=device-width; height=device-height; maximum-scale=1.4; initial-scale=1.0; user-scalable=yes"/>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>
+            {% if title %}
+                {{ title }} | TailwindCSS Layout with Nunjucks
+        {% else %}
+        TailwindCSS Layout with Nunjucks
+        {% endif %}
+        </title>
+
+        <!-- Tailwind CSS, gets compiled when you run  `npm run build`  -->
+        <link rel="stylesheet" href="/assets/css/tailwind.css">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/assets/css/custom.css">
+
+        <script async src="/assets/js/jquery-3.4.1.min.js"></script>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+        <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"/>
+
+    </head>
+
+    <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
+
+        <!-- Navigation -->
+        {% include 'partials/nav.njk' %}
+
+        {# If Home page, add Hero #}
+        {% if pagename=="home"%}
+            <!-- Hero-->
+            {% include 'partials/hero.njk' %}
+        {% else %}
+            {% include 'partials/nohero.njk' %}
+        {% endif %}
+
+        <!-- Page Content -->
+
+        {% block maincontent %}
+            {% include 'partials/section1.njk' %}
+            {% include 'partials/3blocks.njk' %}
+            {% include 'partials/pricing-table.njk' %}
+            {% include 'partials/call-to-action.njk' %}
+        {% endblock maincontent %}
+
+        {% include 'partials/footer.njk' %}
+
+        {% block js %}{% endblock %}
+
+        <script>
+            $(document).ready(function () {
+
+                // Check for click events on the navbar burger icon
+                $(".navbar-burger").click(function () {
+
+                    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                    $(".navbar-burger").toggleClass("is-active");
+                    $(".navbar-menu").toggleClass("is-active");
+
+                });
+            });
+        </script>
+    </body>
+
+</html>
