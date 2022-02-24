@@ -46,6 +46,27 @@ Add them to the {% maincontent %} block where you want them
         {% include 'partials/call-to-action.njk' %}
     {% endblock maincontent %}
 
+## Page variables
+
+### Set page title
+
+You can set the title (browser tab title) in your src/pages \*.njk files
+
+    {% set title = 'Home' %}
+
+### Set page name
+
+Page names are used by the nav menu to mark the current menu item
+
+Add the pages you want to appear in the nav menu to the navitems in src/templates/partials/nav.njk
+
+    {% set navitems = [
+        { title: 'Home', url: 'index.html', pagename: 'home' },
+        { title: 'About', url: 'about.html', pagename: 'about' },
+        { title: 'Contact us', url: 'contact-us.html', pagename: 'contact' },
+        { title: 'in-page JS', url: 'in-page-js.html', pagename: 'inpagejs' }
+    ] %}
+
 ---
 
 # Why?
@@ -124,27 +145,6 @@ Put all png or jpg source images in dist/images/convert and run
 
 this will generate \*.webp files and put them in dist/images/webp
 
-## Page variables
-
-### Set page title
-
-You can set the title (browser tab title) in your src/pages \*.njk files
-
-    {% set title = 'Home' %}
-
-### Set page name
-
-Page names are used by the nav menu to mark the current menu item
-
-Add the pages you want to appear in the nav menu to the navitems in src/templates/partials/nav.njk
-
-    {% set navitems = [
-        { title: 'Home', url: 'index.html', pagename: 'home' },
-        { title: 'About', url: 'about.html', pagename: 'about' },
-        { title: 'Contact us', url: 'contact-us.html', pagename: 'contact' },
-        { title: 'in-page JS', url: 'in-page-js.html', pagename: 'inpagejs' }
-    ] %}
-
 ---
 
 ## Changelog
@@ -152,3 +152,7 @@ Add the pages you want to appear in the nav menu to the navitems in src/template
 - 24-2-2022 : Fixed the src path for the css in the header, everything is working now.
 - 24-2-2022 : you can now run `gulp minifycss` to minify the css files and generate .min.css files in dist/assets/css
 - 24-2-2022 : Added functionality for: images resize (4 custom sizes, width of 325, 500, 768, 1024px is generated for each source file). Minify images (output in dist/images/smaller). Convert images to WebP format (output in dist/images/webp)
+
+## ToDO
+
+Add working contact form?
