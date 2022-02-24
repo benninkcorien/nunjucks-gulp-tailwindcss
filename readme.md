@@ -3,6 +3,7 @@
 # What it does:
 
 This is a starter-kit that lets you quickly build websites with Nunjucks and gulp, using TailwindCSS.
+Nunjucks uses templates for HTML files (change things in 1 place, and all files that use it template/partial will get updated). TailwindCSS is a CSS framework that will only generate CSS code for the classes you've actually used. This keeps the filesize nice and small. Gulp automates everything.
 
 ## Requirements
 
@@ -70,28 +71,58 @@ Here is the project structure:
 - `src/templates` : layout files
 - `src/templates/partials` : partial files like nav, user-tabs, menu, etc
 
-## Sample workflow
+## Workflow
 
-A. without auto-render
+Auto-render & live-reload (via browsersync)
 
-1. edit pages in src
-
-- run `gulp`
-- publish `dist` to hosting provider
-
-B. with auto-render
-
-1. run `gulp watch`
-
-- as you edit src, dist gulp watch will do the rendering behind the scene n updates dist directory: you need to reload your browser to see the changes
-- publish dist to hosting provider
-
-C. with auto-render & auto-reload (via browsersync)
-
-1. run `gulp auto`
+run `gulp auto`
 
 - This will open `http://localhost:3000` in your browser
-- using this workflow, when you edit any files in `src` the `dist` files will be updated (just like workflow B) and your browser (`http://localhost:3000`) will be reloaded automatically.
+- when you edit any files in `src` the `dist` files will be updated and your browser (`http://localhost:3000`) will be reloaded automatically.
+
+## optional extra commands
+
+(open command line to the folder where gulpfile.js is (root))
+
+**Generate minified css files**
+(in dist/assets/css/filename.min.css)
+
+    gulp minifycss
+
+**Minify HTML**
+
+    gulp minifyhtml
+
+#### Images
+
+**Minify images**
+! DO NOT UPDATE gulp-imagemin or imagemin-webp to a later versions, they changed something that completely breaks everything.
+
+    gulp minifyimages
+
+**Generate images in custom sizes**
+(so you can load smaller images on smaller screens)
+
+Requirements for resizing:
+
+- ImageMagick (https://imagemagick.org/script/download.php)
+- GraphicsMagick (on windows search for a GraphicsMagick-1.3-Q8-win64-dll.exe download, I used the one on Sourceforge. GraphicsMagick no longer offers these over FTP)
+
+Specify the sizes you want to generate in the gulpfiles.js, default is [325, 500, 768, 1024]
+
+Run
+
+    gulp resizeimages
+
+This will generate images (same extension as sourcefile) in all the sizes. (filename-1024.png etc)
+
+**Convert PNG/JPG to WebP files**
+
+Put all png or jpg source images in dist/images/convert and run
+
+    gulp convertimages
+
+this will generate \*.webp files and put them in dist/images/webp
 
 ## Page variables
 
@@ -119,4 +150,4 @@ Add the pages you want to appear in the nav menu to the navitems in src/template
 ## Changelog
 
 - 24-2-2022 : Fixed the src path for the css in the header, everything is working now.
-- 24-2-2022 : you can now run `gulp minify-css` to minify the css files and generate .min.css files in dist/assets/css
+- 24-2-2022 : you can now run `gulp minifycss` to minify the css files and generate .min.css files in dist/assets/css
